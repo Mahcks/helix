@@ -27,7 +27,9 @@ type GetChatChattersResponse struct {
 }
 
 // Required scope: moderator:read:chatters
-func (c *Client) GetChannelChatChatters(params *GetChatChattersParams) (*GetChatChattersResponse, error) {
+func (c *Client) GetChannelChatChatters(
+	params *GetChatChattersParams,
+) (*GetChatChattersResponse, error) {
 	if params.BroadcasterID == "" || params.ModeratorID == "" {
 		return nil, errors.New("error: broadcaster and moderator identifiers must be provided")
 	}
@@ -105,11 +107,11 @@ type GetEmoteSetsParams struct {
 }
 
 type SendChatAnnouncementParams struct {
-	BroadcasterID string `query:"broadcaster_id"` // required
-	ModeratorID   string `query:"moderator_id"`   // required
-	Message       string `json:"message"`         // upto 500 chars, thereafter str is truncated
+	BroadcasterID string `query:"broadcaster_id"`                // required
+	ModeratorID   string `query:"moderator_id"`                  // required
+	Message       string `                       json:"message"` // upto 500 chars, thereafter str is truncated
 	// blue || green || orange || purple are valid, default 'primary' or empty str result in channel accent color.
-	Color string `json:"color"`
+	Color string `                       json:"color"`
 }
 
 type SendChatAnnouncementResponse struct {
@@ -154,7 +156,9 @@ type EmoteImage struct {
 	Url4x string `json:"url_4x"`
 }
 
-func (c *Client) GetChannelEmotes(params *GetChannelEmotesParams) (*GetChannelEmotesResponse, error) {
+func (c *Client) GetChannelEmotes(
+	params *GetChannelEmotesParams,
+) (*GetChannelEmotesResponse, error) {
 	resp, err := c.get("/chat/emotes", &ManyEmotes{}, params)
 	if err != nil {
 		return nil, err
@@ -196,7 +200,9 @@ func (c *Client) GetEmoteSets(params *GetEmoteSetsParams) (*GetEmoteSetsResponse
 
 // SendChatAnnouncement sends an announcement to the broadcaster’s chat room.
 // Required scope: moderator:manage:announcements
-func (c *Client) SendChatAnnouncement(params *SendChatAnnouncementParams) (*SendChatAnnouncementResponse, error) {
+func (c *Client) SendChatAnnouncement(
+	params *SendChatAnnouncementParams,
+) (*SendChatAnnouncementResponse, error) {
 	resp, err := c.postAsJSON("/chat/announcements", nil, params)
 	if err != nil {
 		return nil, err
@@ -330,7 +336,9 @@ type UpdateChatSettingsResponse struct {
 
 // UpdateChatSettings updates the broadcaster's chat settings.
 // Required scope: moderator:manage:chat_settings
-func (c *Client) UpdateChatSettings(params *UpdateChatSettingsParams) (*UpdateChatSettingsResponse, error) {
+func (c *Client) UpdateChatSettings(
+	params *UpdateChatSettingsParams,
+) (*UpdateChatSettingsResponse, error) {
 	if params.BroadcasterID == "" {
 		return nil, errors.New("error: broadcaster id must be specified")
 	}
@@ -357,7 +365,7 @@ type UserChatColorResponse struct {
 
 // GetUserChatColorParams are the parameters for GetUserChatColor
 type GetUserChatColorParams struct {
-	UserID string `json:"user_id"`
+	UserID []string `json:"user_id"`
 }
 
 // GetUserChatColorResponse is the response data in UserChatColorResponse
@@ -417,7 +425,9 @@ type UpdateUserChatColorParams struct {
 //   - sea_green
 //   - spring_green
 //   - yellow_green
-func (c *Client) UpdateUserChatColor(params *UpdateUserChatColorParams) (*UpdateUserChatColorResponse, error) {
+func (c *Client) UpdateUserChatColor(
+	params *UpdateUserChatColorParams,
+) (*UpdateUserChatColorResponse, error) {
 	resp, err := c.put("/chat/color", nil, params)
 	if err != nil {
 		return nil, err

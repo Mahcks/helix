@@ -40,7 +40,10 @@ func TestGetChannelChatChatterss(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetChannelChatChatters(testCase.GetChatChattersParams)
 		if err != nil {
@@ -60,7 +63,11 @@ func TestGetChannelChatChatterss(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			continue
@@ -100,7 +107,10 @@ func TestGetChannelChatBadges(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetChannelChatBadges(testCase.GetChatBadgeParams)
 		if err != nil {
@@ -117,12 +127,20 @@ func TestGetChannelChatBadges(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "Missing required parameter \"broadcaster_id\""
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -172,7 +190,10 @@ func TestGetGlobalChatBadges(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetGlobalChatBadges()
 		if err != nil {
@@ -189,12 +210,20 @@ func TestGetGlobalChatBadges(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusUnauthorized {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "OAuth token is missing"
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -247,7 +276,10 @@ func TestGetChannelEmotes(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetChannelEmotes(testCase.GetChannelEmotesParams)
 		if err != nil {
@@ -264,12 +296,20 @@ func TestGetChannelEmotes(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "Missing required parameter \"broadcaster_id\""
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -319,7 +359,10 @@ func TestGetGlobalEmotes(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetGlobalEmotes()
 		if err != nil {
@@ -336,12 +379,20 @@ func TestGetGlobalEmotes(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusUnauthorized {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "OAuth token is missing"
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -412,7 +463,10 @@ func TestGetEmoteSets(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetEmoteSets(testCase.GetEmoteSetsParams)
 		if err != nil {
@@ -429,12 +483,20 @@ func TestGetEmoteSets(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "The parameter \"emote_set_id\" was malformed: the value must be greater than or equal to 1"
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -486,19 +548,32 @@ func TestSendChatAnnouncement(t *testing.T) {
 		{
 			http.StatusBadRequest,
 			&Options{ClientID: "my-client-id", UserAccessToken: "moderator-access-token"},
-			&SendChatAnnouncementParams{BroadcasterID: "100249558", ModeratorID: "100249558", Message: "hello world", Color: "blue"},
+			&SendChatAnnouncementParams{
+				BroadcasterID: "100249558",
+				ModeratorID:   "100249558",
+				Message:       "hello world",
+				Color:         "blue",
+			},
 			`{"error":"Bad Request","status":400,"message":"The parameter \"Color\" was malformed: the value must be a valid color"}`,
 		},
 		{
 			http.StatusNoContent,
 			&Options{ClientID: "my-client-id", UserAccessToken: "moderator-access-token"},
-			&SendChatAnnouncementParams{BroadcasterID: "100249558", ModeratorID: "100249558", Message: "hello twitch chat", Color: "blue"},
+			&SendChatAnnouncementParams{
+				BroadcasterID: "100249558",
+				ModeratorID:   "100249558",
+				Message:       "hello twitch chat",
+				Color:         "blue",
+			},
 			``,
 		},
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.SendChatAnnouncement(testCase.SendChatAnnouncementParams)
 		if err != nil {
@@ -515,12 +590,20 @@ func TestSendChatAnnouncement(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "The parameter \"Color\" was malformed: the value must be a valid color"
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -633,7 +716,10 @@ func TestGetChatSettings(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetChatSettings(testCase.params)
 		if err != nil {
@@ -654,7 +740,11 @@ func TestGetChatSettings(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			continue
@@ -665,7 +755,11 @@ func TestGetChatSettings(t *testing.T) {
 		}
 
 		if resp.Data.Settings[0].BroadcasterID != "22484632" {
-			t.Errorf("expected broadcaster_id to be %s, got %s", "22484632", resp.Data.Settings[0].BroadcasterID)
+			t.Errorf(
+				"expected broadcaster_id to be %s, got %s",
+				"22484632",
+				resp.Data.Settings[0].BroadcasterID,
+			)
 		}
 
 		if testCase.expected != nil {
@@ -758,7 +852,10 @@ func TestUpdateChatSettings(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.UpdateChatSettings(testCase.params)
 		if err != nil {
@@ -779,7 +876,11 @@ func TestUpdateChatSettings(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			continue
@@ -790,7 +891,11 @@ func TestUpdateChatSettings(t *testing.T) {
 		}
 
 		if resp.Data.Settings[0].BroadcasterID != "22484632" {
-			t.Errorf("expected broadcaster_id to be %s, got %s", "22484632", resp.Data.Settings[0].BroadcasterID)
+			t.Errorf(
+				"expected broadcaster_id to be %s, got %s",
+				"22484632",
+				resp.Data.Settings[0].BroadcasterID,
+			)
 		}
 
 		if testCase.expected != nil {
@@ -815,7 +920,9 @@ func TestUpdateChatSettings(t *testing.T) {
 		ctx:  context.Background(),
 	}
 
-	_, err := c.UpdateChatSettings(&UpdateChatSettingsParams{BroadcasterID: "123", ModeratorID: "123"})
+	_, err := c.UpdateChatSettings(
+		&UpdateChatSettingsParams{BroadcasterID: "123", ModeratorID: "123"},
+	)
 	if err == nil {
 		t.Error("expected error but got nil")
 	}
@@ -851,10 +958,13 @@ func TestGetUserChatColor(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.GetUserChatColor(&GetUserChatColorParams{
-			UserID: testCase.UserID,
+			UserID: []string{testCase.UserID},
 		})
 		if err != nil {
 			t.Error(err)
@@ -870,12 +980,20 @@ func TestGetUserChatColor(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "The ID in the user_id query parameter is not valid."
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
@@ -910,7 +1028,10 @@ func TestUpdateUserChatColor(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		c := newMockClient(testCase.options, newMockHandler(testCase.statusCode, testCase.respBody, nil))
+		c := newMockClient(
+			testCase.options,
+			newMockHandler(testCase.statusCode, testCase.respBody, nil),
+		)
 
 		resp, err := c.UpdateUserChatColor(&UpdateUserChatColorParams{
 			UserID: testCase.UserID,
@@ -930,12 +1051,20 @@ func TestUpdateUserChatColor(t *testing.T) {
 			}
 
 			if resp.ErrorStatus != http.StatusBadRequest {
-				t.Errorf("expected error status to be %d, got %d", http.StatusBadRequest, resp.ErrorStatus)
+				t.Errorf(
+					"expected error status to be %d, got %d",
+					http.StatusBadRequest,
+					resp.ErrorStatus,
+				)
 			}
 
 			expectedErrMsg := "The named color in the color query parameter is not valid."
 			if resp.ErrorMessage != expectedErrMsg {
-				t.Errorf("expected error message to be %s, got %s", expectedErrMsg, resp.ErrorMessage)
+				t.Errorf(
+					"expected error message to be %s, got %s",
+					expectedErrMsg,
+					resp.ErrorMessage,
+				)
 			}
 
 			continue
